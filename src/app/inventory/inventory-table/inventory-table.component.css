@@ -1,0 +1,69 @@
+table{
+    width: 100%;
+}
+
+
+th{ /* Table header styles */
+    color: black;
+    font-weight: bold;
+    font-size: 18 px;
+
+}
+
+td{ 
+    color: black;
+    font-weight: 400;
+}
+
+.hide{      /* for hiding the loading footer */
+    display: none;
+}
+
+/* mat table */
+
+
+.inventory-search-div{
+    margin: 10px;
+}
+
+.inventory-search-form{
+    width: 60%;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.inventory-search-form div .mat-form-field-underline{
+    display: none;
+}
+
+.inventory-search-form div .mat-form-field-infix{
+    border-top: 0px;
+
+}
+
+.inventory-search-form div .mat-form-field-wrapper{
+    padding-bottom: 0px;
+
+}
+
+.inventory-search-form div .mat-form-field-suffix button{
+    height: 32px;
+    width: 32px;
+
+
+}
+
+
+#add-icon {
+    font-size: 24px;
+    padding-bottom: 1px;
+}
+
+.delete-button{
+    color: rgba(255, 0, 0, 0.925);
+}
+
+
+#add-button {
+    color: dodgerblue;
+}

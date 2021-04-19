@@ -1,0 +1,120 @@
+* {
+    font-weight: 300;
+
+}
+
+
+.inventory{
+    color: rgba(255, 166, 0, 0.801);
+}
+
+.config{
+    color: rgba(0, 102, 255, 0.822);
+}
+
+.busqueda{
+    color: red
+}
+
+.clientes-ventas{
+    color: rgba(2, 148, 2, 0.76);
+
+}
+
+.clientes{
+    color: rgba(2, 148, 2, 0.76);
+}
+
+.nav-menu-buttons:hover {
+    font-size: 16px;
+
+}
+
+.nav-menu-buttons {
+    transition: 200ms;
+}
+
+
+
+
+mat-sidenav-container {     /* main nav bottom margin */
+    margin-bottom: 15px;
+}
+
+
+mat-toolbar .desktop-display{
+    font-size: 20px;
+}
+
+
+
+.hidden{
+    display: none;
+}
+
+mat-toolbar{
+    height: auto;
+    background-color: rgba(153, 153, 153, 0.068);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+
+}
+
+mat-toolbar a img{
+    
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;  
+    width: 250px;
+
+}
+
+
+
+
+@media (max-width: 881px) and (min-width: 581px){
+
+    
+mat-toolbar .desktop-display{
+    display: none;
+}        
+
+
+
+mat-toolbar a img {
+
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;  
+    width: 200px;
+    }
+
+}
+
+
+
+
+/* media breakpoints for mobile devices  */
+@media (max-width: 580px ) and (min-width: 280px){
+
+    
+
+mat-toolbar .desktop-display{
+    display: none;
+}        
+
+
+
+mat-toolbar a img {
+
+    
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+}
+
+
+}
+
+

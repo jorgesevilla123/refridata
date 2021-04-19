@@ -1,0 +1,51 @@
+
+<app-main-nav></app-main-nav>
+
+<div class="sales-search-container">
+
+
+<h2>Ventas por clientes</h2>
+
+
+
+<mat-form-field appearance="outline" class="clients-search-form">
+    <mat-label>Buscar clientes</mat-label>
+    <input #searchBox matInput id="search-box" placeholder="Buscar" (keyup)="searchKeys$.next($event.target.value)" />
+    <mat-icon matSuffix>search</mat-icon>
+    <!-- <button mat-button matSuffix mat-icon-button aria-label="clear">
+      <mat-icon>close</mat-icon>
+    </button> -->
+  </mat-form-field>
+
+
+</div>
+
+
+
+
+  
+
+
+<div class="search-results">
+<mat-grid-list cols="4" rowHeight="300px">
+    <mat-grid-tile *ngFor="let client of clients"> 
+      <mat-card class="clients-card">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <mat-icon>account_circle</mat-icon>
+          </div>
+          <mat-card-title>{{client.name}}</mat-card-title>
+          <mat-card-subtitle>{{client.phoneNumber}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+          <button class="client-select" mat-raised-button matTooltip="Seleccionar cliente" [routerLink]="['/venta-por-cliente', client._id]">Seleccionar</button>
+        </mat-card-actions> 
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  </div>
+
+
+
+
+

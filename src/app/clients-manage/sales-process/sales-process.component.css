@@ -1,0 +1,81 @@
+
+
+
+.product-card-img{
+    width: 130px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.card-title{
+    font-weight: 200;
+    
+    }
+    
+  
+ .inventory-products-card{
+        width: 320px;
+        margin-bottom: 50px;
+ }
+
+
+
+ .search-results{
+     margin-top: 100px;
+ }
+    
+
+ .process-title{
+     margin-left: 40px;
+     margin-bottom: 20px;
+
+ }
+
+ .sec1{
+     position: relative;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ .sec2{
+    margin-left: auto;
+    margin-right: auto;
+
+ }
+
+ .shopping-basket-card{
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 80%;
+ }
+
+
+ .client-display-card{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+
+.add-to-basket{
+    margin-left: 50px;
+    margin-top: 40px;
+    background-color: rgba(0, 102, 255, 0.822);
+    color: white;
+}
+
+
+#buy-products{
+
+    background-color: rgba(2, 214, 2, 0.712);
+
+
+}
+
+#remove-from-cart{
+    color: black;
+}

@@ -1,0 +1,40 @@
+
+<app-main-nav></app-main-nav>
+
+
+
+<h1 class="sales-title">Ventas y clientes</h1>
+
+
+
+   <!-- Sales expansion panel -->
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Ventas
+        </mat-panel-title>
+        <mat-panel-description>
+          Realizar una venta 
+          <mat-icon>point_of_sale</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+    <button mat-raised-button routerLink="/clientes/ventas-por-clientes">Ver ventas por clientes</button>
+  
+    </mat-expansion-panel>
+   <!-- Clients expansion panel -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Clientes
+        </mat-panel-title>
+        <mat-panel-description>
+          Datos e informacion de clientes <mat-icon>assignment_ind</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div> <button mat-raised-button routerLink="/clientes/administrar-clientes">Ver todos los clientes</button>
+      </div>
+         </mat-expansion-panel>
+  </mat-accordion>
+  

@@ -1,0 +1,55 @@
+<app-main-nav></app-main-nav>
+
+
+
+
+<button  style="font-size:18px; margin-left: 20px; margin-bottom: 20px; font-weight: 200;" mat-icon-button routerLink="/sales-and-clients/sales"><mat-icon style="font-size: 25px; margin-right: 10px;">keyboard_backspace</mat-icon>Volver</button>
+
+<div class="bounds"  *ngIf="client">
+
+    <div fxFlex="50" class="sec1" fxFlex.xs="50" fxFlexAlign="center center">
+      <mat-card class="client-display-card">
+        <mat-card-title class="process-title">Cliente <mat-icon>account_box</mat-icon></mat-card-title>
+        <mat-card-content>
+          <h4>Nombre: {{client.name}}</h4>
+          <h4>Cedula: {{client.cedula}}</h4>
+          <h4>Numero de telefono: {{client.phoneNumber}}</h4>
+
+
+        </mat-card-content>
+
+
+      </mat-card>
+
+      
+  <button class="add-to-basket" mat-raised-button (click)="searchDialog()">Añadir al carrito <mat-icon>add_shopping_cart</mat-icon></button>
+      </div>
+      <div fxFlex="50" class="sec2" fxFlex.xs="50" fxFlexAlign="center center">
+        <mat-card class="shopping-basket-card">
+          <mat-card-title class="process-title">Cesta de productos <mat-icon>shopping_basket</mat-icon></mat-card-title>
+          <mat-card-content *ngFor="let product of client.cart">
+            <mat-card>
+              <mat-card-content>
+                <div>
+                  <h4>{{product.title}}</h4>
+                  <h4>Precio: {{product.precio}}$</h4>
+                  <h4>Cantidad: {{product.cantidad}}$</h4>
+                  <button id="remove-from-cart" mat-raised-button color="warn" (click)="removeFromCart(product)">Eliminar de carrito <mat-icon>remove_shopping_cart</mat-icon></button>
+                </div>
+                </mat-card-content>
+            </mat-card>
+          </mat-card-content>
+          <div *ngIf="cart ; else noProductsYet">
+          <button id="buy-products" mat-raised-button (click)="buyProduct()">Realizar compra <mat-icon>point_of_sale</mat-icon></button>
+        </div>
+        <ng-template #noProductsYet>
+          <h3>No hay productos en el carrito</h3>
+        </ng-template>
+        </mat-card>
+      </div>
+</div>
+
+
+
+
+

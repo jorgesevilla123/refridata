@@ -1,0 +1,130 @@
+body {
+    background-color: white;
+}
+
+button{
+    margin: 5px;
+}
+
+
+
+.inventory-search-div{
+    margin: 10px;
+}
+
+
+.search-inventory{
+    color: white;
+    background-color: rgba(0, 102, 255, 0.822);
+}
+
+    
+    
+#add-icon {
+    font-size: 24px;
+    padding-bottom: 1px;
+}
+
+
+#add-button {
+    color: dodgerblue;
+}
+
+
+
+
+
+.bounds{
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+
+
+.inventory-icon {
+  display: inline; 
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 80px;
+}
+
+
+
+.inventory-search-form {
+  width: 60%;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+
+.inventory-table-categories {
+  display: flex;
+  margin: auto;
+}
+
+
+.inventory-categories {
+  display: flex;
+  margin-left: 20px;
+} 
+
+
+.inventory-edit-img-button{
+ 
+  color: black;
+  margin-left: 5px;
+
+}
+
+.card-title{
+font-weight: 200;
+font-size: 15px;
+
+}
+
+.product-card-img{
+  height: 100px;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.inventory-products-card{
+  width: 320px;
+}
+
+
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+
+.page-item{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 15px;
+}
+
+.page-link{
+  height: 36px;
+
+}
+
+.card-footer{
+  margin-bottom: 40px;
+}
+
+
+
+
+mat-chip {
+  display: inline;
+}
+
+

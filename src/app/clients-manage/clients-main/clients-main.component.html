@@ -1,0 +1,86 @@
+<app-main-nav></app-main-nav>
+
+
+<h1 class="clients-title">Clientes</h1>
+
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Nuevo cliente
+      </mat-panel-title>
+      <mat-panel-description>
+        Agregar nuevo cliente
+        <mat-icon style="margin-left: 8px;">person_add</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+    <form [formGroup]="clientService.clientsForm" (submit)="onClientSubmit()">
+
+    <mat-form-field class="name-field" appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-icon matSuffix>account_circle</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="id-field" appearance="outline">
+      <mat-label>Numero de cedula</mat-label>
+      <input type="number" matInput formControlName="cedula">
+      <mat-icon matSuffix>branding_watermark</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="email-field" appearance="outline">
+      <mat-label>Correo electronico</mat-label>
+      <input type="email" matInput formControlName="email">
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="number-field" appearance="outline">
+      <mat-label>Numero de telefono</mat-label>
+      <input type="number" matInput formControlName="phoneNumber">
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+      <button class="add-client-button" mat-raised-button>Agregar cliente  <mat-icon>person_add</mat-icon></button>
+  
+
+    <h4 class="constantBuyer-field">Comprador constante?</h4>
+    <mat-checkbox id="constant" color="primary" formControlName="constantBuyer" class="yes-check" (change)="toggle($event)">Si</mat-checkbox> 
+    </form>
+
+
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+
+
+
+
+<app-client-search></app-client-search>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
