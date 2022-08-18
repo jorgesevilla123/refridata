@@ -20,7 +20,7 @@ export class AlertService {
     snackConfig.horizontalPosition = this.horizontalPosition;
     snackConfig.verticalPosition = this.verticalPosition;
     snackConfig.panelClass = ['success-class'];
-    this.snackBar.open(message, 'Aceptar', snackConfig);
+    this.snackBar.open(message, 'ver', snackConfig);
 
 
   }

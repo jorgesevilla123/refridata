@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable, Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged, switchMap, map } from "rxjs/operators";
 import { InventoryService } from "../../services/inventory.service";
@@ -7,7 +7,7 @@ import { InventoryManageProductsComponent } from "../inventory-manage-products/i
 import { InventoryProductEditComponent } from "../inventory-product-edit/inventory-product-edit.component";
 import { InventoryImageEditComponent } from "../inventory-image-edit/inventory-image-edit.component";
 import { Products } from "../../interfaces-models/products";
-import { registerLocaleData } from "@angular/common";
+import { registerLocaleData, ViewportScroller } from "@angular/common";
 import localeDe from "@angular/common/locales/en-DE";
 import { AlertService } from "../../reusable-components/alerts/alert/alert.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
@@ -28,11 +28,17 @@ export class InventorySearchComponent implements OnInit {
 
 
 
+  pageYoffSet = 0;
   productsCount: number;
   pager: any = {};
   pageOfItems: Products[] = [];
+  
   searchQuery: string ;
   page: number;
+
+  @HostListener('window:scroll', ['$event']) onScroll(event){
+    this.pageYoffSet = window.pageYOffset
+  }
 
   constructor(
     private inventoryService: InventoryService,
@@ -40,7 +46,8 @@ export class InventorySearchComponent implements OnInit {
     private alert: AlertService,
     private dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private scroll: ViewportScroller
   ) { }
 
   //Pushing a search term into the Observable stream
@@ -71,6 +78,11 @@ export class InventorySearchComponent implements OnInit {
   }
 
 
+  scrollToTop(){
+    this.scroll.scrollToPosition([0,0]);
+  }
+
+
 
   loadPage(searchTerm, page) {
     if(searchTerm === undefined) {
@@ -82,34 +94,50 @@ export class InventorySearchComponent implements OnInit {
   
           this.pager = paginationObject.pager
           this.pageOfItems = paginationObject.pageOfItems
-        
-       
+
         }
-  
       )
-
     }
-   
-
-
-
   }
+
+
+
+
+
 
 
 
 
   searchProducts(searchkey){
-
      let queryString = unescape(searchkey);
-
-     this.router.navigate(['/inventario/busqueda'], {queryParams:  { q :  queryString, page: 1 }});
-      
-  
+     this.router.navigate(['/inventario/busqueda'], {queryParams:  { q :  queryString, page: this.page || 1  }});
   }
 
 
 
-  countedProducts(){
+
+
+
+
+
+
+  searchByLocation(locationKey){
+    let queryString = unescape(locationKey);
+    console.log(queryString);
+    // this.router.navigate(['/inventario/busqueda'], {queryParams: {q: queryString}});
+  }
+
+
+
+
+
+
+
+
+
+
+
+   countedProducts(){
     this.inventoryService.countProducts().subscribe(
       count => this.productsCount = count,
       error => console.log(error),
@@ -118,6 +146,11 @@ export class InventorySearchComponent implements OnInit {
 
     )
   }
+
+
+
+
+
 
 
 
@@ -145,7 +178,17 @@ export class InventorySearchComponent implements OnInit {
 
 
 
+
+
+
+
+
+
+
+
+
   onEdit(productForm: Products) {
+    console.log(productForm);
     this.inventoryService.populateForm(productForm)
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '40%';
@@ -182,7 +225,7 @@ export class InventorySearchComponent implements OnInit {
 
       error => console.log(error),
 
-      () => console.log('completed')
+      () => this.loadPage(this.searchQuery, this.page)
 
 
     )

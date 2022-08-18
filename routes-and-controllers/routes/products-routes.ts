@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import upload from "../../fileProcessing";
-import { addProduct, deleteOneProduct, filterCategories, getAllProducts, getLowStockProducts, getOneProduct, 
+import { addProduct, aggregation, deleteOneProduct, filterCategories, findByUbication, getAllProducts, getLowStockProducts, getOneProduct, 
     getOutOfStockProducts, 
     justForTest, 
     paginateProducts, 
@@ -20,6 +20,12 @@ router.route('/checkProducts').get(justForTest);
 
 //Route for getting all products
 router.route('/').get(getAllProducts);
+
+
+
+//Route for getting parsed json response 
+router.route('/aggregation').get(aggregation)
+
 
 
 
@@ -56,8 +62,22 @@ router.route('/products?').get(paginateProducts);
 
 
 
+
+
+
+//Route for finding products by location
+router.route('/ubication?').get(findByUbication);
+
+
+
+
+
+
+
 //Route for getting one product
 router.route('/:id').get(getOneProduct);
+
+
 
 
 
@@ -70,8 +90,23 @@ router.route('/').post(upload.single('imagePath'), addProduct);
 
 
 
+
+
+//Route for adding a product
+router.route('/').post(upload.single('imagePath'));
+
+
+
+
+
+
+
+
 //Route for deleting selected product
 router.route('/delete-product/:id').delete(deleteOneProduct);
+
+
+
 
 
 
@@ -84,6 +119,13 @@ router.route('/update/:id').put(upload.none(), updateOneProduct)
 
 //Route for updating a product image
 router.route('/update-photo/:id').put(upload.single('newImage'), updateProductImage)
+
+
+
+
+
+
+
 
 
 

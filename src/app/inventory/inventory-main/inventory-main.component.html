@@ -94,7 +94,8 @@
         <img class="product-card-img" mat-card-image [src]="product.imagePath">
       </ng-template>
       <mat-card-content>
-        <h3>Modelo: {{product.modelo}}</h3>
+        <h3>Modelo: {{product.modelo}}<mat-icon matTooltip="{{product.imagePath}}"
+          >info</mat-icon> </h3>
         <h3>Precio: {{product.precio | currency}}</h3>
         <h3>Cantidad: {{product.cantidad}}</h3>
         <h2><b>Categoria: {{product.categorias}}</b></h2>
@@ -144,7 +145,7 @@
         <a [routerLink]="['/inventario/categorias']" [queryParams]=" {category: categoryQuery, page: pager.currentPage - 1 }" class="page-link"><mat-icon>navigate_before</mat-icon></a>
         </li>
         <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item number-item">
-            <a [routerLink]="['/inventario/caegorias']" [queryParams]="{category: categoryQuery, page: page }" class="page-link">{{page}}</a>
+            <a [routerLink]="['/inventario/categorias']" [queryParams]="{category: categoryQuery, page: page }" class="page-link">{{page}}</a>
         </li>
         <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item next-item">
             <a [routerLink]="['/inventario/categorias']" [queryParams]="{category: categoryQuery, page: pager.currentPage + 1 }" class="page-link"><mat-icon>navigate_next</mat-icon></a>

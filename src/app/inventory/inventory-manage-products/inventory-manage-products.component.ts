@@ -82,7 +82,9 @@ export class InventoryManageProductsComponent implements OnInit {
 
 
   
+  
 
 
   
 }
+

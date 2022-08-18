@@ -2,6 +2,7 @@ import { Schema, model, Document } from 'mongoose';
 
 export interface ProductInterface extends Document {
     title: string,
+    description: string,
     modelo: string,
     precio: number,
     cantidad: number,
@@ -13,6 +14,7 @@ export interface ProductInterface extends Document {
 
 export const ProductSchema: Schema = new Schema({
     title: {type: String, index: true},
+    description: String,
     modelo: {type: String, index: true},
     precio: Number,
     cantidad: Number,
@@ -24,3 +26,4 @@ export const ProductSchema: Schema = new Schema({
 
 
 export default  model<ProductInterface>('Product', ProductSchema);
+

@@ -45,6 +45,7 @@ export class InventoryService {
   productsForm: FormGroup = new FormGroup({
     _id: new FormControl(),
     title: new FormControl(),
+    description: new FormControl(),
     modelo: new FormControl(),
     precio: new FormControl(),
     cantidad: new FormControl(),
@@ -87,6 +88,12 @@ export class InventoryService {
     )
   }
 
+
+
+
+
+
+
   getPaginateProducts(page: any): Observable<any> {
     return this.http.get<any>(`${this.productsUrl}/products?page=${page}`).pipe(
       map(products => {return products})
@@ -95,11 +102,30 @@ export class InventoryService {
 
 
 
+
+
+  getProductsByLocation(location: any): Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.productsUrl}/ubication?bucket=${location}`).pipe(
+      map(products => {return products})
+    )
+  }
+
+
+
+
+
+
+
+
   getOutOfStockProducts(): Observable<Products[]> {
     return this.http.get<Products[]>(`${this.productsUrl}/out-of-stock`).pipe(
       map(products => {return products})
     )
   }
+
+
+
+
 
 
   getLowStockProducts(): Observable<Products[]> {
@@ -136,6 +162,8 @@ export class InventoryService {
 
   editProduct(product: FormData): Observable<Products>{
     const id = product.get('_id');
+    const category = product.get('category');
+    console.log(category);
     const url = `${this.productsUrl}/update/${id}`;
     return this.http.put<Products>(url, product).pipe(
       map( res => {return res})
@@ -223,14 +251,16 @@ export class InventoryService {
 
 
   populateForm(product){
+    console.log('showing product', product.categorias[0])
     this.productsForm.patchValue({
       _id: product._id,
       title: product.title,
+      description: product.description,
       modelo: product.modelo,
       precio: product.precio,
       cantidad: product.cantidad,
       ubicacion: product.ubicacion,
-      categoria: product.categoria
+      categoria: product.categorias[0]
     })
   }
 

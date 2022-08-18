@@ -143,8 +143,6 @@ export const getLowStockProducts = (req: Request, res: Response) => {
 
 export const searchProducts = (req: Request, res: Response) => {
     let itemsPerPage = 40;
-
-
     let product = req.query.q
     let page: any = req.query.page
     Product.find( {$text: {$search: `${new RegExp(`${product}`)}, 'gi'`}})
@@ -156,23 +154,30 @@ export const searchProducts = (req: Request, res: Response) => {
 
             else {
 
-                
                 let pageToInt = parseInt(page);
                 const pager = paginate(foundProducts.length, pageToInt, itemsPerPage);
-        
-
                     const pageOfItems = foundProducts.slice(pager.startIndex, pager.endIndex + 1);
-
-
-                    res.json({products: foundProducts, current: page, pages: Math.ceil(foundProducts.length / itemsPerPage), count: count, pageOfItems, pager})
-
-               
+                    res.json({products: foundProducts, current: page, pages: Math.ceil(foundProducts.length / itemsPerPage), count: count, pageOfItems, pager}) 
             }
         })
         
     })
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -258,6 +263,7 @@ export const paginateProducts = (req: Request, res: Response) => {
 
 export const getOneProduct = (req: Request, res: Response) => {
     const id = req.params.id
+  
     Product.findById({ _id: id }, (err, product) => {
         if (err) {
             console.log(err)
@@ -274,8 +280,39 @@ export const getOneProduct = (req: Request, res: Response) => {
 
 
 
+
+
+
+
+
+
+export const findByUbication = (req: Request, res: Response) => {
+    const ubication: any = req.query.bucket
+
+    Product.find({ ubicacion: ubication}, (err, products) => {
+        if(err) {
+            console.log(err)
+        }
+        else {
+            res.json(products)
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const addProduct = (req: Request, res: Response) => {
-    const { title, modelo, precio, cantidad } = req.body;
+    const { title, modelo, precio, cantidad, categoria } = req.body;
 
     let imagePath
     if (req.file == undefined) {
@@ -284,7 +321,7 @@ export const addProduct = (req: Request, res: Response) => {
     else {
         imagePath = `/${req.file.destination}/${req.file.filename}`
     }
-    const newProduct = new Product({ title, modelo, cantidad, precio, imagePath })
+    const newProduct = new Product({ title, modelo, cantidad, precio, imagePath})
     newProduct.save((err, product) => {
         if (err) {
             console.log(err)
@@ -361,8 +398,8 @@ export const deleteOneProduct = (req: Request, res: Response) => {
 
 export const updateOneProduct = (req: Request, res: Response) => {
     const id = req.params.id
-    const { title, modelo, precio, cantidad, categoria, ubicacion } = req.body
-    Product.findByIdAndUpdate({ _id: id }, { title: title, modelo: modelo, precio: precio, cantidad: cantidad, ubicacion: ubicacion, $push: {categorias: categoria}}, { upsert: false },  (err, product) => {
+    const { title, description, modelo, precio, cantidad, categoria, ubicacion } = req.body
+    Product.findByIdAndUpdate({ _id: id }, { title: title, description: description, modelo: modelo, precio: precio, cantidad: cantidad, ubicacion: ubicacion, $set: {categorias: categoria}}, { upsert: false },  (err, product) => {
         if (err) {
             console.log(err)
             res.json({ message: 'Error updating product' })
@@ -390,4 +427,26 @@ export const updateProductImage = (req: Request, res: Response) => {
         res.json(doc);
 
     });
+}
+
+
+
+
+export const aggregation = (req: Request, res: Response) => {
+    var pipe = [
+        {$project: {__v: 0}}
+    ]
+    Product.aggregate(pipe, (err, products) => {
+        if(err) {
+            res.json(err);
+        }
+        else {
+            var parsedJson = JSON.stringify(products)
+            var reparsed = JSON.parse(parsedJson);
+            res.json(reparsed);
+            
+        }
+        
+    }
+    )
 }

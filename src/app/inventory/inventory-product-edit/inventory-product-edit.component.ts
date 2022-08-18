@@ -39,6 +39,7 @@ export class InventoryProductEditComponent implements OnInit {
   editProduct(){
     let _id = this.inventoryService.productsForm.get('_id').value;
     let title = this.inventoryService.productsForm.get('title').value;
+    let description = this.inventoryService.productsForm.get('description').value;
     let modelo = this.inventoryService.productsForm.get('modelo').value;
     let precio = this.inventoryService.productsForm.get('precio').value;
     let cantidad = this.inventoryService.productsForm.get('cantidad').value;
@@ -47,6 +48,7 @@ export class InventoryProductEditComponent implements OnInit {
     const formData = new FormData();
     formData.append('_id', _id);
     formData.append('title', title);
+    formData.append('description', description);
     formData.append('modelo', modelo);
     formData.append('precio', precio);
     formData.append('categoria', categoria);
@@ -54,6 +56,7 @@ export class InventoryProductEditComponent implements OnInit {
     formData.append('ubicacion', ubicacion);
     let products = {
       title : title,
+      description: description,
       modelo: modelo,
       precio: precio,
       cantidad: cantidad,
