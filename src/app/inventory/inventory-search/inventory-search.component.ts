@@ -269,7 +269,6 @@ export class InventorySearchComponent implements OnInit {
 
 
 
-    
   }
 
 
@@ -288,16 +287,17 @@ export class InventorySearchComponent implements OnInit {
           this.alert.notifyWarn(`No se elimino ningun producto`, 2500, 'top', 'center');
         }
       }
-
     )
- 
 
 
-  }
 
 
 
   
+
+
+}
+
 
 
 }

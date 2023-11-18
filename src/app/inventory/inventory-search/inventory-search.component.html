@@ -86,7 +86,7 @@
            
         </ng-template>
       <div *ngIf="product.imagePath == 'no-photo'; else image">
-        <img class="product-card-img" mat-card-image src="../../../../assets/no-image.png">
+        <img class="produc-card-img" width="auto" height="100px" mat-card-image src="../../../../assets/no-image.png">
       </div>
       <ng-template #image>
         <img class="product-card-img" mat-card-image [src]="product.imagePath">
@@ -98,7 +98,6 @@
         <h3>Cantidad: {{product.cantidad}}</h3>
         <h3><b>Categoria: {{product.categorias }} </b></h3>
         <h3 style="text-align: center;"><b>Ubicacion: {{product.ubicacion}}</b></h3>
-
 
       </mat-card-content>
 
